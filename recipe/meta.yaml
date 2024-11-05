@@ -1,13 +1,13 @@
 {% set name = "aiida-wannier90_workflows" %}
-{% set version = "1.0.2" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/aiida-wannier90-workflows-{{ version }}.tar.gz
-  sha256: 3ebdaca8511e6646354de6347f9c5569b4c30246da326ef6ea721e1fc1d1f2b9
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 014ada7badb863537363e5a3449644f179c7f2909d6144312a1d6e76546580d6
 
 build:
   noarch: python
@@ -20,10 +20,13 @@ requirements:
     - python >=3.6
     - reentry
   run:
-    - aiida-core >=1.1.1,<2
-    - aiida-quantumespresso >=3.0.0a6
-    - aiida-wannier90 >=2.0.0
-    - python >=3.6
+    - aiida-core >=2.0,<3
+    - aiida-pseudo >=0.6
+    - aiida-quantumespresso >=4.4
+    - aiida-wannier90 >=2.1
+    - python >=3.8
+    - click >=8.0
+    - colorama
 
 test:
   imports:
